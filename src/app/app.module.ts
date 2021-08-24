@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app/app.component';
@@ -12,11 +14,17 @@ import { MatInputModule } from '@angular/material/input';
 import { SearchResultScreenComponent } from './search-result-screen/search-result-screen.component';
 
 @NgModule({
-	declarations: [AppComponent, SearchBarComponent, SearchResultScreenComponent],
+	declarations: [
+		AppComponent,
+		SearchBarComponent,
+		SearchResultScreenComponent,
+	],
 	imports: [
 		AppRoutingModule,
 		BrowserModule,
 		BrowserAnimationsModule,
+		HttpClientModule,
+		ReactiveFormsModule,
 
 		// angular material
 		MatButtonModule,
