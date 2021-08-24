@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "planes-status-checker": {
+      "hosting": {
+        "plane-status-checker": [
+          "planes-status-checker"
+        ]
+      }
+    }
+  }
+}
