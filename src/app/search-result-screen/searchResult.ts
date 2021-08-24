@@ -5,7 +5,7 @@ interface Pagination {
 	totla: number;
 }
 
-interface Data {
+export interface Data {
 	flight_date: string;
 	flight_status: string;
 	departure: {

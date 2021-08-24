@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { FetchFlightDataService } from '../fetch-flight-data/fetch-flight-data.service';
-import { SearchResult } from './searchResult';
+import { SearchResult, Data } from './searchResult';
 
 @Component({
 	selector: 'app-search-result-screen',
@@ -9,10 +9,12 @@ import { SearchResult } from './searchResult';
 	styleUrls: ['./search-result-screen.component.css'],
 })
 export class SearchResultScreenComponent implements OnInit {
-	searchData: SearchResult = {} as SearchResult;
+	searchResult: SearchResult = {} as SearchResult;
+	searchData: Data = {} as Data;
 	constructor(private fetchFlightDataService: FetchFlightDataService) {}
 
 	ngOnInit(): void {
-		this.searchData = this.fetchFlightDataService.data;
+		this.searchResult = this.fetchFlightDataService.data;
+		this.searchData = this.searchResult.data[0];
 	}
 }
