@@ -15,12 +15,12 @@ export interface Data {
 		icao: String;
 		terminal: String;
 		gate: String;
-		delay: null; // change later
-		scheduled: String;
-		estimated: String;
-		actual: null; // change later
-		estimated_runway: null; // change later
-		actual_runway: null; // change later
+		delay: Number | null; // eg. 23 -> delay 23 mins, null -> no delay
+		scheduled: String | null;
+		estimated: String | null;
+		actual: String | null; // time
+		estimated_runway: String | null; // time
+		actual_runway: String | null; // time
 	};
 	arrival: {
 		airport: String;
@@ -30,12 +30,12 @@ export interface Data {
 		terminal: String;
 		gate: String;
 		baggage: null; // change later
-		delay: null; // change later
-		scheduled: String;
-		estimated: String;
-		actual: null; // change later
-		estimated_runway: null; // change later
-		actual_runway: null; // change later
+		delay: Number | null; // change later
+		scheduled: String | null;
+		estimated: String | null;
+		actual: String | null; // time
+		estimated_runway: String | null; // time
+		actual_runway: String | null; // time
 	};
 	airline: {
 		name: String;
@@ -48,7 +48,12 @@ export interface Data {
 		icao: String;
 		codeshared: null; // change later
 	};
-	aircraft: null; // change later
+	aircraft: null | {
+		registration: String;
+		iata: String;
+		icao: String;
+		icao24: String;
+	};
 	live: null; // change later
 }
 
