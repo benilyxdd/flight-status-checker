@@ -9,9 +9,10 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
 // angular materials
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { SearchResultScreenComponent } from './search-result-screen/search-result-screen.component';
 
 @NgModule({
-	declarations: [AppComponent, SearchBarComponent],
+	declarations: [AppComponent, SearchBarComponent, SearchResultScreenComponent],
 	imports: [
 		AppRoutingModule,
 		BrowserModule,
