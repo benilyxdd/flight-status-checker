@@ -1,8 +1,13 @@
-<form>
+<form [formGroup]="flightCodeInput" (ngSubmit)="onFormSubmit()">
 	<div class="flight-code-input-container">
 		<mat-form-field class="example-full-width" appearance="fill">
 			<mat-label>Flight Code</mat-label>
-			<input matInput placeholder="AB123..." required />
+			<input
+				matInput
+				placeholder="AB123..."
+				required
+				formControlName="IATA"
+			/>
 		</mat-form-field>
 	</div>
 
