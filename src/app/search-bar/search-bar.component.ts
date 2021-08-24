@@ -21,10 +21,9 @@ export class SearchBarComponent implements OnInit {
 
 	ngOnInit(): void {}
 
-	onFormSubmit(): void {
-		// this.fetchFlightDataService.fetchFlightData(
-		// 	this.flightCodeInput.value.IATA
-		// );
-		console.log(this.flightCodeInput.value);
+	async onFormSubmit(): Promise<void> {
+		const res = await this.fetchFlightDataService.fetchFlightData(
+			this.flightCodeInput.value.IATA
+		);
 	}
 }

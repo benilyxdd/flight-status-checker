@@ -11,10 +11,9 @@ export class FetchFlightDataService {
 	data: any = null;
 	constructor(private http: HttpClient) {}
 
-	fetchFlightData(IATA: string): any {
+	async fetchFlightData(IATA: string): Promise<any> {
 		const url = `http://api.aviationstack.com/v1/flights?access_key=${api_key}&flight_iata=${IATA}`;
-		const res = this.http.get(url);
+		const res = await this.http.get(url).toPromise();
 		this.data = res;
-		return res;
 	}
 }
