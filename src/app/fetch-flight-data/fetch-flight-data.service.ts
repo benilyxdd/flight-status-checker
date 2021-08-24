@@ -32,8 +32,24 @@ export class FetchFlightDataService {
 			.toPromise();
 		const token = auth_res['access_token'];
 
-		// const url = `http://api.aviationstack.com/v1/flights?access_key=${api_key}&flight_iata=${IATA}`;
-		// const res = await this.http.get(url).toPromise();
+		// access the data
+		const carrierCodeArray = IATA.match(/[A-Z]+/g);
+		const carrierCode = carrierCodeArray
+			? carrierCodeArray[0]
+			: 'IMPOSSIBLE';
+		const flightNumberArray = IATA.match(/[0-9]+/g);
+		const flightNumber = flightNumberArray
+			? flightNumberArray[0]
+			: 'IMPOSSIBLE';
+		const currentDate = new Date().toISOString().slice(0, 10);
+		const data_headers = {
+			headers: new HttpHeaders({
+				Authorization: `Bearer ${token}`,
+			}),
+		};
+
+		const data_url = `https://test.api.amadeus.com/v2/schedule/flights?carrierCode=${carrierCode}&flightNumber=${flightNumber}&scheduledDepartureDate=${currentDate}`;
+		const res = await this.http.get(data_url, data_headers).toPromise();
 		// this.data = res;
 	}
 }
