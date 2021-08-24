@@ -30,7 +30,7 @@ import { SearchResultScreenComponent } from './search-result-screen/search-resul
 		MatButtonModule,
 		MatInputModule,
 	],
-	providers: [],
+	providers: [HttpClientModule, ReactiveFormsModule],
 	bootstrap: [AppComponent],
 })
 export class AppModule {}
