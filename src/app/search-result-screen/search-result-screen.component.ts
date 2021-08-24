@@ -11,10 +11,14 @@ import { SearchResult, Data } from './searchResult';
 export class SearchResultScreenComponent implements OnInit {
 	searchResult: SearchResult = {} as SearchResult;
 	searchData: Data = {} as Data;
+	fetched: boolean = false;
 	constructor(private fetchFlightDataService: FetchFlightDataService) {}
 
 	ngOnInit(): void {
 		this.searchResult = this.fetchFlightDataService.data;
-		this.searchData = this.searchResult.data[0];
+		if (this.searchResult) {
+			this.searchData = this.searchResult.data[0];
+			this.fetched = true;
+		}
 	}
 }
