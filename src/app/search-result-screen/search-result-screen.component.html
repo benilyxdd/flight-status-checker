@@ -1,1 +1,92 @@
-<p>search-result-screen works!</p>
+<div class="screen">
+	<div class="basic-info-container">
+		<div class="flight-iata-container">
+			<h1>{{ searchData.flight.iata }}</h1>
+		</div>
+
+		<div class="flight-icao-container">
+			<h2>{{ searchData.flight.icao }}</h2>
+		</div>
+
+		<div class="flight-date-container">
+			<h3>{{ searchData.flight_date }}</h3>
+		</div>
+
+		<div class="flight-status-container">
+			<h3>Status: {{ searchData.flight_status }}</h3>
+		</div>
+
+		<div class="flight-scheduled-time-container">
+			<h3>Scheduled Time: {{ searchData.departure.scheduled }}</h3>
+		</div>
+	</div>
+
+	<div class="delay-message-container" *ngIf="searchData.departure.delay">
+		<h3>Delay: {{ searchData.departure.delay }} min(s)</h3>
+	</div>
+
+	<div class="departure-detail-container">
+		<h2>Departure</h2>
+
+		<div class="departure-airport-container">
+			<h3>
+				Airport: {{ searchData.departure.airport }} -
+				{{ searchData.departure.iata }}
+			</h3>
+		</div>
+
+		<div class="departure-termial-container">
+			<h3>
+				Termial:
+				{{
+					!searchData.departure.terminal
+						? "Not Available"
+						: searchData.departure.terminal
+				}}
+			</h3>
+		</div>
+
+		<div class="departure-gate-container">
+			<h3>
+				Gate:
+				{{
+					!searchData.departure.gate
+						? "Not Available"
+						: searchData.departure.gate
+				}}
+			</h3>
+		</div>
+	</div>
+	<div class="arrival-detail-container">
+		<h2>Arrival</h2>
+
+		<div class="arrival-airport-container">
+			<h3>
+				Airport: {{ searchData.arrival.airport }} -
+				{{ searchData.arrival.iata }}
+			</h3>
+		</div>
+
+		<div class="arrival-termial-container">
+			<h3>
+				Termial:
+				{{
+					!searchData.arrival.terminal
+						? "Not Available"
+						: searchData.arrival.terminal
+				}}
+			</h3>
+		</div>
+
+		<div class="arrival-gate-container">
+			<h3>
+				Gate:
+				{{
+					!searchData.arrival.gate
+						? "Not Available"
+						: searchData.arrival.gate
+				}}
+			</h3>
+		</div>
+	</div>
+</div>
