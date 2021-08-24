@@ -1,4 +1,9 @@
-<div class="screen">
+<div *ngIf="!searchData">
+	<h1>Error:</h1>
+	<h2>Please do not access this page directly</h2>
+</div>
+
+<div class="screen" *ngIf="searchData">
 	<div class="basic-info-container">
 		<div class="flight-iata-container">
 			<h1>{{ searchData.flight.iata }}</h1>
