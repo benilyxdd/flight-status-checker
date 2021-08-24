@@ -1,14 +1,14 @@
 import { TestBed } from '@angular/core/testing';
 
 import { FetchFlightDataService } from './fetch-flight-data.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('FetchFlightDataService', () => {
 	let service: FetchFlightDataService;
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			imports: [HttpClient],
+			imports: [HttpClientModule],
 		});
 	});
 

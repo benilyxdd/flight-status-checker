@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormBuilder } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import { SearchBarComponent } from './search-bar.component';
 
@@ -10,7 +10,7 @@ describe('SearchBarComponent', () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			declarations: [SearchBarComponent],
-			imports: [FormBuilder]
+			imports: [FormsModule]
 		}).compileComponents();
 	});
 
