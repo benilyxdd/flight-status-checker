@@ -13,7 +13,8 @@ jobs:
             - name: Setup
               run: npm ci
 
-			- run: touch ./src/environments/env.ts && echo "export const api_key = "{{secret.API_KEY}}"" > ./src/environments/env.ts
+			- name: Create
+			  run: touch ./src/environments/env.ts && echo "export const api_key = "{{secret.API_KEY}}"" > ./src/environments/env.ts
 
             - name: Test
               run: |
