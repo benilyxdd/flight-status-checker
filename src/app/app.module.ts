@@ -4,13 +4,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app/app.component';
-import { SearchBarComponent } from './search-bar/search-bar.component';
-
 // angular materials
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app/app.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
 import { SearchResultScreenComponent } from './search-result-screen/search-result-screen.component';
 
 @NgModule({
