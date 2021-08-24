@@ -1,4 +1,4 @@
-<form [formGroup]="flightCodeInput" (ngSubmit)="onFormSubmit()">
+<form [formGroup]="flightCodeInput">
 	<div class="flight-code-input-container">
 		<mat-form-field class="example-full-width" appearance="fill">
 			<mat-label>Flight Code</mat-label>
@@ -12,7 +12,12 @@
 	</div>
 
 	<div class="submit-search-button-container">
-		<button mat-stroked-button type="submit" routerLink="/result">
+		<button
+			type="button"
+			routerLink="/result"
+			(click)="onFormSubmit()"
+			[disabled]="flightCodeInput.invalid"
+		>
 			Search
 		</button>
 	</div>
