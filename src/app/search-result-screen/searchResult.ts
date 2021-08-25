@@ -1,22 +1,30 @@
+// https://developer.flightstats.com/api-docs/flightstatus/v2/flightstatusresponse
+
+// date format: yyyy-mm-dd'T'hh:mm:ss:SSS
+
+interface Time {
+	dateUtc: String;
+	dateLocal: String;
+}
 interface Request {
 	airline: {
 		airline: {
 			fs: String;
-			iata: String;
+			iata: String; // usually use this
 			icao: String;
 			name: String;
 			active: Boolean;
 		};
-		requestedCode: String;
+		requestedCode: String; // same as IATA in this program
 	};
 	flight: {
-		requested: String;
-		interpreted: String;
+		requested: String; // flight number after IATA
+		interpreted: String; // same as above
 	};
 	utc: {
-		interpreted: Boolean;
+		interpreted: Boolean; // false?
 	};
-	url: String;
+	url: String; // the url the program is requesting without app id and secret
 	nonstopOnly: {
 		interpreted: Boolean;
 	};
@@ -24,7 +32,7 @@ interface Request {
 		year: String;
 		month: String;
 		day: String;
-		interpreted: String;
+		interpreted: String; // combine string (eg. 2021-09-01)
 	};
 	extendedOptions: {
 		requested: String;
@@ -37,36 +45,36 @@ interface Airport {
 	iata: String;
 	icao: String;
 	faa: String;
-	name: String;
+	name: String; // airport full name (eg. Hong Kong International Airport)
 	street1?: String;
 	street2?: String;
-	city: String;
+	city: String; // full city name of the airport located (eg. Hong Kong)
 	cityCode: String;
 	stateCode?: String;
 	postalCode?: String;
-	countryCode: String;
-	countryName: String;
-	regionName: String;
-	timeZoneRegionName: String;
+	countryCode: String; // ISO codes (eg. HK)
+	countryName: String; // country full name (eg. Hong Kong SAR)
+	regionName: String; // Asia / Africa / NA / ...
+	timeZoneRegionName: String; // `${region}/${countryName}` (eg. Asia/Hong_Kong)
 	weatherZone: String;
-	localTime: String;
-	utcOffsetHours: Number;
+	localTime: String; // local time (eg. 2021-08-25T23:24:00.092)
+	utcOffsetHours: Number; // UTC+? (eg. 8)
 	latitude: Number;
 	longitude: Number;
-	elevationFeet: Number;
+	elevationFeet: Number; // distance above sea level in feet
 	classification: Number;
-	active: Boolean;
-	weatherUrl: String;
-	delayIndexUrl: String;
+	active: Boolean; // weather the airport is operating
+	weatherUrl: String; // an api link to fetch local weather
+	delayIndexUrl: String; // an api link to fetch delay index
 }
 
 interface Flight {
-	flightId: Number;
+	flightId: Number; // idk
 	arrivalAirport: Airport;
 }
 
 export interface FlightStatuses {
-	flightId: Number;
+	flightId: Number; // idk
 	carrier: {
 		fs: String;
 		iata: String;
@@ -74,18 +82,12 @@ export interface FlightStatuses {
 		name: String;
 		active: Boolean;
 	};
-	flightNumber: String;
+	flightNumber: String; // numbers in the IATA code
 	departureAirport: Airport;
 	arrivalAirport: Airport;
-	departureDate: {
-		dateUtc: String;
-		dateLocal: String;
-	};
-	arrivalDate: {
-		dateUtc: String;
-		dateLocal: String;
-	};
-	status: String;
+	departureDate: Time;
+	arrivalDate: Time;
+	status: String; // S, A
 	schedule: {
 		flightType: String;
 		serviceClasses: String;
@@ -94,62 +96,22 @@ export interface FlightStatuses {
 		downlines: Array<Flight> | []; // change later
 	};
 	operationalTimes: {
-		publishedDeparture: {
-			dateUtc: String;
-			dateLocal: String;
-		};
-		scheduledGateDeparture: {
-			dateUtc: String;
-			dateLocal: String;
-		};
-		estimatedGateDeparture?: {
-			dateUtc: String;
-			dateLocal: String;
-		};
-		flightPlanPlannedDeparture?: {
-			dateUtc: String;
-			dateLocal: String;
-		};
-		scheduledRunwayDeparture?: {
-			dateUtc: String;
-			dateLocal: String;
-		};
-		actualGateDeparture?: {
-			dateUtc: String;
-			dateLocal: String;
-		};
-		estimatedRunwayDeparture?: {
-			dateUtc: String;
-			dateLocal: String;
-		};
-		actualRunwayDeparture?: {
-			dateUtc: String;
-			dateLocal: String;
-		};
-		publishedArrival: {
-			dateUtc: String;
-			dateLocal: String;
-		};
-		flightPlanPlannedArrival?: {
-			dateUtc: String;
-			dateLocal: String;
-		};
-		scheduledGateArrival: {
-			dateUtc: String;
-			dateLocal: String;
-		};
-		estimatedGateArrival?: {
-			dateUtc: String;
-			dateLocal: String;
-		};
-		scheduledRunwayArrival?: {
-			dateUtc: String;
-			dateLocal: String;
-		};
-		estimatedRunwayArrival?: {
-			dateUtc: String;
-			dateLocal: String;
-		};
+		publishedDeparture: Time;
+		publishedArrival: Time;
+		scheduledGateDeparture: Time;
+		scheduledRunwayDeparture?: Time;
+		estimatedGateDeparture?: Time;
+		actualGateDeparture?: Time;
+		flightPlanPlannedDeparture?: Time;
+		estimatedRunwayDeparture?: Time;
+		actualRunwayDeparture?: Time;
+		scheduledRunwayArrival?: Time;
+		scheduledGateArrival: Time;
+		estimatedGateArrival?: Time;
+		actualGateArrival: Time;
+		flightPlanPlannedArrival?: Time;
+		estimatedRunwayArrival?: Time;
+		actualRunwayArrival: Time;
 	};
 	codeshares:
 		| Array<{
@@ -167,6 +129,9 @@ export interface FlightStatuses {
 	// need to add something
 	delays: {
 		departureGateDelayMinutes?: Number;
+		departureRunwayDelayMinutes?: Number;
+		arrivalGateDelayMinutes?: Number;
+		arrivalRunwayDelayMinutes?: Number;
 	};
 	flightDurations: {
 		scheduledBlockMinutes: Number;
