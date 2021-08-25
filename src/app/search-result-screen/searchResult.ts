@@ -1,63 +1,224 @@
-interface Pagination {
-	limit: number;
-	offset: number;
-	count: number;
-	totla: number;
-}
-
-export interface Data {
-	flight_date: string;
-	flight_status: string;
-	departure: {
-		airport: String;
-		timezone: String;
-		iata: String;
-		icao: String;
-		terminal: String;
-		gate: String;
-		delay: Number | null; // eg. 23 -> delay 23 mins, null -> no delay
-		scheduled: String | null;
-		estimated: String | null;
-		actual: String | null; // time
-		estimated_runway: String | null; // time
-		actual_runway: String | null; // time
-	};
-	arrival: {
-		airport: String;
-		timezone: String;
-		iata: String;
-		icao: String;
-		terminal: String;
-		gate: String;
-		baggage: null; // change later
-		delay: Number | null; // change later
-		scheduled: String | null;
-		estimated: String | null;
-		actual: String | null; // time
-		estimated_runway: String | null; // time
-		actual_runway: String | null; // time
-	};
+interface Request {
 	airline: {
-		name: String;
-		iata: String;
-		icao: String;
+		airline: {
+			fs: String;
+			iata: String;
+			icao: String;
+			name: String;
+			active: Boolean;
+		};
+		requestedCode: String;
 	};
 	flight: {
-		number: String;
+		requested: String;
+		interpreted: String;
+	};
+	utc: {
+		interpreted: Boolean;
+	};
+	url: String;
+	nonstopOnly: {
+		interpreted: Boolean;
+	};
+	date: {
+		year: String;
+		month: String;
+		day: String;
+		interpreted: String;
+	};
+	extendedOptions: {
+		requested: String;
+		interpreted: String;
+	};
+}
+
+export interface FlightStatuses {
+	flightId: Number;
+	carrier: {
+		fs: String;
 		iata: String;
 		icao: String;
-		codeshared: null; // change later
+		name: String;
+		active: Boolean;
 	};
-	aircraft: null | {
-		registration: String;
+	flightNumber: String;
+	departureAirport: {
+		fs: String;
 		iata: String;
 		icao: String;
-		icao24: String;
+		faa: String;
+		name: String;
+		street1: String;
+		street2: String;
+		city: String;
+		cityCode: String;
+		countryCode: String;
+		countryName: String;
+		regionName: String;
+		timeZoneRegionName: String;
+		weatherZone: String;
+		localTime: String;
+		utcOffsetHours: Number;
+		latitude: Number;
+		longitude: Number;
+		elevationFeet: Number;
+		classification: Number;
+		active: Boolean;
+		weatherUrl: String;
+		delayIndexUrl: String;
 	};
-	live: null; // change later
+	arrivalAirport: {
+		fs: String;
+		iata: String;
+		icao: String;
+		faa: String;
+		name: String;
+		city: String;
+		cityCode: String;
+		stateCode: String;
+		countryCode: String;
+		countryName: String;
+		regionName: String;
+		timeZoneRegionName: String;
+		weatherZone: String;
+		localTime: String;
+		utcOffsetHours: Number;
+		latitude: Number;
+		longitude: Number;
+		elevationFeet: Number;
+		classification: Number;
+		active: Boolean;
+		weatherUrl: String;
+		delayIndexUrl: String;
+	};
+	departureDate: {
+		dateUtc: String;
+		dateLocal: String;
+	};
+	arrivalDate: {
+		dateUtc: String;
+		dateLocal: String;
+	};
+	status: String;
+	schedule: {
+		flightType: String;
+		serviceClasses: String;
+		restrictions: String;
+		uplines: Array<any>; // change later
+		downlines: Array<any>; // change later
+	};
+
+	operationalTimes: {
+		publishedDeparture: {
+			dateUtc: String;
+			dateLocal: String;
+		};
+		scheduledGateDeparture: {
+			dateUtc: String;
+			dateLocal: String;
+		};
+		estimatedGateDeparture: {
+			dateUtc: String;
+			dateLocal: String;
+		};
+		actualGateDeparture: {
+			dateUtc: String;
+			dateLocal: String;
+		};
+		estimatedRunwayDeparture: {
+			dateUtc: String;
+			dateLocal: String;
+		};
+		actualRunwayDeparture: {
+			dateUtc: String;
+			dateLocal: String;
+		};
+		publishedArrival: {
+			dateUtc: String;
+			dateLocal: String;
+		};
+		scheduledGateArrival: {
+			dateUtc: String;
+			dateLocal: String;
+		};
+		estimatedGateArrival: {
+			dateUtc: String;
+			dateLocal: String;
+		};
+		estimatedRunwayArrival: {
+			dateUtc: String;
+			dateLocal: String;
+		};
+	};
+	codeshares: [
+		{
+			carrier: {
+				fs: String;
+				iata: String;
+				icao: String;
+				name: String;
+				active: Boolean;
+			};
+			flightNumber: String;
+			relationship: String;
+		},
+		{
+			carrier: {
+				fs: String;
+				iata: String;
+				icao: String;
+				name: String;
+				active: Boolean;
+			};
+			flightNumber: String;
+			relationship: String;
+		},
+		{
+			carrier: {
+				fs: String;
+				iata: String;
+				icao: String;
+				name: String;
+				active: Boolean;
+			};
+			flightNumber: String;
+			relationship: String;
+		}
+	];
+	delays: {
+		time: Number; // ???
+	}; // need to add something
+	flightDurations: {
+		scheduledBlockMinutes: Number;
+		taxiOutMinutes: Number;
+	};
+	airportResources: {
+		departureTerminal: String;
+		departureGate: String;
+		arrivalTerminal: String;
+	};
+	flightEquipment: {
+		scheduledEquipment: {
+			iata: String;
+			name: String;
+			turboProp: Boolean;
+			jet: Boolean;
+			widebody: Boolean;
+			regional: Boolean;
+		};
+		actualEquipment: {
+			iata: String;
+			name: String;
+			turboProp: Boolean;
+			jet: Boolean;
+			widebody: Boolean;
+			regional: Boolean;
+		};
+		tailNumber: String;
+	};
 }
 
 export interface SearchResult {
-	pagination: Pagination;
-	data: Array<Data>;
+	request: Request;
+	flightStatuses: Array<FlightStatuses>;
 }
