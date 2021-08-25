@@ -1,15 +1,21 @@
 <div class="screen">
+	<!-- Direct access to result page start -->
 	<div *ngIf="!fetched">
 		<h1>Error:</h1>
 		<h2>Please do not access this page directly</h2>
 	</div>
+	<!-- Direct access to result page end -->
 
+	<!-- No data start -->
 	<div *ngIf="fetched && !searchData">
 		<h1>Error:</h1>
 		<h2>There is currently no data for your flight</h2>
 	</div>
+	<!-- No data end -->
 
+	<!-- main content start -->
 	<div *ngIf="fetched && searchData">
+		<!-- Basic info start -->
 		<div class="basic-info-container">
 			<div class="flight-iata-container">
 				<h1>
@@ -37,7 +43,9 @@
 				</h3>
 			</div>
 		</div>
+		<!-- basic info end -->
 
+		<!-- Delay info start -->
 		<div class="delay-message-container" *ngIf="searchData.delays">
 			<h3>Delay: {{ totalDelay }} min(s)</h3>
 			<div
@@ -67,9 +75,7 @@
 				>
 					<h3>
 						Departure Runway Delay:
-						{{
-							searchData.delays.departureRunwayDelayMinutes
-						}}
+						{{ searchData.delays.departureRunwayDelayMinutes }}
 						min(s)
 					</h3>
 				</div>
@@ -93,7 +99,9 @@
 				</div>
 			</div>
 		</div>
+		<!-- Delay info end -->
 
+		<!-- departure info start -->
 		<div class="departure-detail-container">
 			<h2>Departure</h2>
 
@@ -126,6 +134,9 @@
 				</h3>
 			</div>
 		</div>
+		<!-- departure info end -->
+
+		<!-- arrival info start -->
 		<div class="arrival-detail-container">
 			<h2>Arrival</h2>
 
@@ -157,5 +168,13 @@
 				</h3>
 			</div>
 		</div>
+		<!-- arrival info end -->
+
+		<!-- flight opeartion time info start -->
+		<div class="flight-operation-detail-container">
+			this is flight opeartion detail section
+		</div>
+		<!-- flight opeartion time info end -->
 	</div>
+	<!-- main content end -->
 </div>
