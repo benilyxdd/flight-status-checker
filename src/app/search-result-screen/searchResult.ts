@@ -3,95 +3,95 @@
 // date format: yyyy-mm-dd'T'hh:mm:ss:SSS
 
 interface Time {
-	dateUtc: String;
-	dateLocal: String;
+	dateUtc: string;
+	dateLocal: string;
 }
 interface Request {
 	airline: {
 		airline: {
-			fs: String;
-			iata: String; // usually use this
-			icao: String;
-			name: String;
-			active: Boolean;
+			fs: string;
+			iata: string; // usually use this
+			icao: string;
+			name: string;
+			active: boolean;
 		};
-		requestedCode: String; // same as IATA in this program
+		requestedCode: string; // same as IATA in this program
 	};
 	flight: {
-		requested: String; // flight number after IATA
-		interpreted: String; // same as above
+		requested: string; // flight number after IATA
+		interpreted: string; // same as above
 	};
 	utc: {
-		interpreted: Boolean; // false?
+		interpreted: boolean; // false?
 	};
-	url: String; // the url the program is requesting without app id and secret
+	url: string; // the url the program is requesting without app id and secret
 	nonstopOnly: {
-		interpreted: Boolean;
+		interpreted: boolean;
 	};
 	date: {
-		year: String;
-		month: String;
-		day: String;
-		interpreted: String; // combine string (eg. 2021-09-01)
+		year: string;
+		month: string;
+		day: string;
+		interpreted: string; // combine string (eg. 2021-09-01)
 	};
 	extendedOptions: {
-		requested: String;
-		interpreted: String;
+		requested: string;
+		interpreted: string;
 	};
 }
 
 interface Airport {
-	fs: String;
-	iata: String;
-	icao: String;
-	faa: String;
-	name: String; // airport full name (eg. Hong Kong International Airport)
-	street1?: String;
-	street2?: String;
-	city: String; // full city name of the airport located (eg. Hong Kong)
-	cityCode: String;
-	stateCode?: String;
-	postalCode?: String;
-	countryCode: String; // ISO codes (eg. HK)
-	countryName: String; // country full name (eg. Hong Kong SAR)
-	regionName: String; // Asia / Africa / NA / ...
-	timeZoneRegionName: String; // `${region}/${countryName}` (eg. Asia/Hong_Kong)
-	weatherZone: String;
-	localTime: String; // local time (eg. 2021-08-25T23:24:00.092)
-	utcOffsetHours: Number; // UTC+? (eg. 8)
-	latitude: Number;
-	longitude: Number;
-	elevationFeet: Number; // distance above sea level in feet
-	classification: Number;
-	active: Boolean; // weather the airport is operating
-	weatherUrl: String; // an api link to fetch local weather
-	delayIndexUrl: String; // an api link to fetch delay index
+	fs: string;
+	iata: string;
+	icao: string;
+	faa: string;
+	name: string; // airport full name (eg. Hong Kong International Airport)
+	street1?: string;
+	street2?: string;
+	city: string; // full city name of the airport located (eg. Hong Kong)
+	cityCode: string;
+	stateCode?: string;
+	postalCode?: string;
+	countryCode: string; // ISO codes (eg. HK)
+	countryName: string; // country full name (eg. Hong Kong SAR)
+	regionName: string; // Asia / Africa / NA / ...
+	timeZoneRegionName: string; // `${region}/${countryName}` (eg. Asia/Hong_Kong)
+	weatherZone: string;
+	localTime: string; // local time (eg. 2021-08-25T23:24:00.092)
+	utcOffsetHours: number; // UTC+? (eg. 8)
+	latitude: number;
+	longitude: number;
+	elevationFeet: number; // distance above sea level in feet
+	classification: number;
+	active: boolean; // weather the airport is operating
+	weatherUrl: string; // an api link to fetch local weather
+	delayIndexUrl: string; // an api link to fetch delay index
 }
 
 interface Flight {
-	flightId: Number; // idk
+	flightId: number; // idk
 	arrivalAirport: Airport;
 }
 
 export interface FlightStatuses {
-	flightId: Number; // idk
+	flightId: number; // idk
 	carrier: {
-		fs: String;
-		iata: String;
-		icao: String;
-		name: String;
-		active: Boolean;
+		fs: string;
+		iata: string;
+		icao: string;
+		name: string;
+		active: boolean;
 	};
-	flightNumber: String; // numbers in the IATA code
+	flightNumber: string; // numbers in the IATA code
 	departureAirport: Airport;
 	arrivalAirport: Airport;
 	departureDate: Time;
 	arrivalDate: Time;
-	status: String; // S, A
+	status: string; // S, A
 	schedule: {
-		flightType: String;
-		serviceClasses: String;
-		restrictions: String;
+		flightType: string;
+		serviceClasses: string;
+		restrictions: string;
 		uplines: Array<Flight> | []; // change later
 		downlines: Array<Flight> | []; // change later
 	};
@@ -116,58 +116,58 @@ export interface FlightStatuses {
 	codeshares:
 		| Array<{
 				carrier: {
-					fs: String;
-					iata: String;
-					icao: String;
-					name: String;
-					active: Boolean;
+					fs: string;
+					iata: string;
+					icao: string;
+					name: string;
+					active: boolean;
 				};
-				flightNumber: String;
-				relationship: String;
+				flightNumber: string;
+				relationship: string;
 		  }>
 		| [];
 	// need to add something
 	delays: {
-		departureGateDelayMinutes?: Number;
-		departureRunwayDelayMinutes?: Number;
-		arrivalGateDelayMinutes?: Number;
-		arrivalRunwayDelayMinutes?: Number;
+		departureGateDelayMinutes?: number;
+		departureRunwayDelayMinutes?: number;
+		arrivalGateDelayMinutes?: number;
+		arrivalRunwayDelayMinutes?: number;
 	};
 	flightDurations: {
-		scheduledBlockMinutes: Number;
-		scheduledAirMinutes?: Number;
-		scheduledTaxiOutMinutes?: Number;
-		scheduledTaxiInMinutes?: Number;
-		blockMinutes?: Number;
-		airMinutes?: Number;
-		taxiInMinutes?: Number;
-		taxiOutMinutes?: Number;
+		scheduledBlockMinutes: number;
+		scheduledAirMinutes?: number;
+		scheduledTaxiOutMinutes?: number;
+		scheduledTaxiInMinutes?: number;
+		blockMinutes?: number;
+		airMinutes?: number;
+		taxiInMinutes?: number;
+		taxiOutMinutes?: number;
 	};
 	airportResources: {
-		departureTerminal?: String;
-		departureGate?: String;
-		arrivalTerminal?: String; // number string or "INTL"
-		arrivalGate?: String;
-		baggage?: String;
+		departureTerminal?: string;
+		departureGate?: string;
+		arrivalTerminal?: string; // number string or "INTL"
+		arrivalGate?: string;
+		baggage?: string;
 	};
 	flightEquipment: {
 		scheduledEquipment: {
-			iata: String;
-			name: String;
-			turboProp: Boolean;
-			jet: Boolean;
-			widebody: Boolean;
-			regional: Boolean;
+			iata: string;
+			name: string;
+			turboProp: boolean;
+			jet: boolean;
+			widebody: boolean;
+			regional: boolean;
 		};
 		actualEquipment?: {
-			iata: String;
-			name: String;
-			turboProp: Boolean;
-			jet: Boolean;
-			widebody: Boolean;
-			regional: Boolean;
+			iata: string;
+			name: string;
+			turboProp: boolean;
+			jet: boolean;
+			widebody: boolean;
+			regional: boolean;
 		};
-		tailNumber?: String;
+		tailnumber?: string;
 	};
 }
 
