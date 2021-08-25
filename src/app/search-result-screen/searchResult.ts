@@ -175,3 +175,15 @@ export interface SearchResult {
 	request: Request;
 	flightStatuses: Array<FlightStatuses> | [];
 }
+
+export const FlightStatusDescription: { [string: string]: string } = {
+	A: 'Active',
+	C: 'Canceled',
+	D: 'Diverted',
+	DN: 'Data source needed',
+	L: 'Landed',
+	NO: 'Not Operational',
+	R: 'Redirected',
+	S: 'Scheduled',
+	U: 'Unknown',
+};
