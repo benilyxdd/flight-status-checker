@@ -9,16 +9,41 @@ import { SearchResult, FlightStatuses } from './searchResult';
 	styleUrls: ['./search-result-screen.component.css'],
 })
 export class SearchResultScreenComponent implements OnInit {
+	// whole data
 	searchResult: SearchResult = {} as SearchResult;
 	searchData: FlightStatuses = {} as FlightStatuses;
 	fetched: boolean = false;
+
+	// seperated data
+	totalDelay: number = 0;
 	constructor(private fetchFlightDataService: FetchFlightDataService) {}
 
 	ngOnInit(): void {
 		this.searchResult = this.fetchFlightDataService.data;
 		if (this.searchResult) {
+			// assign whole data
 			this.searchData = this.searchResult.flightStatuses[0];
 			this.fetched = true;
+
+			// calculate separte data
+
+			// delays
+			if (this.searchData.delays.arrivalGateDelayMinutes) {
+				this.totalDelay +=
+					this.searchData.delays.arrivalGateDelayMinutes;
+			}
+			if (this.searchData.delays.arrivalRunwayDelayMinutes) {
+				this.totalDelay +=
+					this.searchData.delays.arrivalRunwayDelayMinutes;
+			}
+			if (this.searchData.delays.departureGateDelayMinutes) {
+				this.totalDelay +=
+					this.searchData.delays.departureGateDelayMinutes;
+			}
+			if (this.searchData.delays.departureRunwayDelayMinutes) {
+				this.totalDelay +=
+					this.searchData.delays.departureRunwayDelayMinutes;
+			}
 		}
 	}
 }

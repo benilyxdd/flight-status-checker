@@ -39,9 +39,59 @@
 		</div>
 
 		<div class="delay-message-container" *ngIf="searchData.delays">
-			<h3>
-				Delay: {{ searchData.delays.departureGateDelayMinutes }} min(s)
-			</h3>
+			<h3>Delay: {{ totalDelay }} min(s)</h3>
+			<div
+				class="delay-events-container"
+				*ngIf="
+					searchData.delays.arrivalGateDelayMinutes ||
+					searchData.delays.arrivalRunwayDelayMinutes ||
+					searchData.delays.departureGateDelayMinutes ||
+					searchData.delays.departureRunwayDelayMinutes
+				"
+			>
+				<div class="delay-events-title-container">
+					<h3>Delay Event(s)</h3>
+				</div>
+				<div
+					class="departure-gate-delay-info-container"
+					*ngIf="searchData.delays.departureGateDelayMinutes"
+				>
+					<h3>
+						Departure Gate Delay:
+						{{ searchData.delays.departureGateDelayMinutes }} min(s)
+					</h3>
+				</div>
+				<div
+					class="departure-runway-delay-info-container"
+					*ngIf="searchData.delays.departureRunwayDelayMinutes"
+				>
+					<h3>
+						Departure Runway Delay:
+						{{
+							searchData.delays.departureRunwayDelayMinutes
+						}}
+						min(s)
+					</h3>
+				</div>
+				<div
+					class="arrival-gate-delay-info-container"
+					*ngIf="searchData.delays.arrivalGateDelayMinutes"
+				>
+					<h3>
+						Arrival Gate Delay:
+						{{ searchData.delays.arrivalGateDelayMinutes }} min(s)
+					</h3>
+				</div>
+				<div
+					class="arrival-runway-delay-info-container"
+					*ngIf="searchData.delays.arrivalRunwayDelayMinutes"
+				>
+					<h3>
+						Arrival Runway Delay:
+						{{ searchData.delays.arrivalRunwayDelayMinutes }} min(s)
+					</h3>
+				</div>
+			</div>
 		</div>
 
 		<div class="departure-detail-container">
