@@ -12,14 +12,7 @@ export class FetchFlightDataService {
 
 	async fetchFlightData(IATA: string): Promise<any> {
 		// prepare data to fetch
-		const carrierCodeArray = IATA.match(/[A-Z]+/g);
-		const carrierCode = carrierCodeArray
-			? carrierCodeArray[0]
-			: 'IMPOSSIBLE';
-		const flightNumberArray = IATA.match(/[0-9]+/g);
-		const flightNumber = flightNumberArray
-			? flightNumberArray[0]
-			: 'IMPOSSIBLE';
+		const [carrierCode, flightNumber] = IATA.split(' ');
 		const currentDate = new Date().toISOString().slice(0, 10);
 		const currentYear = currentDate.slice(0, 4);
 		const currentMonth = currentDate.slice(5, 7);
