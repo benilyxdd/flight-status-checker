@@ -4,7 +4,12 @@
 		<h2>Please do not access this page directly</h2>
 	</div>
 
-	<div *ngIf="fetched">
+	<div *ngIf="fetched && !searchData">
+		<h1>Error:</h1>
+		<h2>There is currently no data for your flight</h2>
+	</div>
+
+	<div *ngIf="fetched && searchData">
 		<div class="basic-info-container">
 			<div class="flight-iata-container">
 				<h1>
@@ -34,7 +39,9 @@
 		</div>
 
 		<div class="delay-message-container" *ngIf="searchData.delays">
-			<h3>Delay: {{ searchData.delays.time }} min(s)</h3>
+			<h3>
+				Delay: {{ searchData.delays.departureGateDelayMinutes }} min(s)
+			</h3>
 		</div>
 
 		<div class="departure-detail-container">
@@ -86,6 +93,16 @@
 						!searchData.airportResources.arrivalTerminal
 							? "Not Available"
 							: searchData.airportResources.arrivalTerminal
+					}}
+				</h3>
+			</div>
+			<div class="arrival-gate-container">
+				<h3>
+					Gate:
+					{{
+						!searchData.airportResources.arrivalGate
+							? "Not Available"
+							: searchData.airportResources.arrivalGate
 					}}
 				</h3>
 			</div>
