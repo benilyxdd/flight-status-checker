@@ -7,28 +7,34 @@
 	<div *ngIf="fetched">
 		<div class="basic-info-container">
 			<div class="flight-iata-container">
-				<h1>{{ searchData.flight.iata }}</h1>
+				<h1>
+					{{ searchData.carrier.iata }}{{ searchData.flightNumber }}
+				</h1>
 			</div>
 
 			<div class="flight-icao-container">
-				<h2>{{ searchData.flight.icao }}</h2>
+				<h2>
+					{{ searchData.carrier.icao }}{{ searchData.flightNumber }}
+				</h2>
 			</div>
 
 			<div class="flight-date-container">
-				<h3>{{ searchData.flight_date }}</h3>
+				<h3>{{ searchData.departureDate.dateLocal }}</h3>
 			</div>
 
 			<div class="flight-status-container">
-				<h3>Status: {{ searchData.flight_status }}</h3>
+				<h3>Status: {{ searchData.status }}</h3>
 			</div>
 
 			<div class="flight-scheduled-time-container">
-				<h3>Scheduled Time: {{ searchData.departure.scheduled }}</h3>
+				<h3>
+					Scheduled Time: {{ searchData.departureDate.dateLocal }}
+				</h3>
 			</div>
 		</div>
 
-		<div class="delay-message-container" *ngIf="searchData.departure.delay">
-			<h3>Delay: {{ searchData.departure.delay }} min(s)</h3>
+		<div class="delay-message-container" *ngIf="searchData.delays">
+			<h3>Delay: {{ searchData.delays.time }} min(s)</h3>
 		</div>
 
 		<div class="departure-detail-container">
@@ -36,8 +42,8 @@
 
 			<div class="departure-airport-container">
 				<h3>
-					Airport: {{ searchData.departure.airport }} -
-					{{ searchData.departure.iata }}
+					Airport: {{ searchData.departureAirport.name }} -
+					{{ searchData.departureAirport.iata }}
 				</h3>
 			</div>
 
@@ -45,9 +51,9 @@
 				<h3>
 					Termial:
 					{{
-						!searchData.departure.terminal
+						!searchData.airportResources.departureTerminal
 							? "Not Available"
-							: searchData.departure.terminal
+							: searchData.airportResources.departureTerminal
 					}}
 				</h3>
 			</div>
@@ -56,9 +62,9 @@
 				<h3>
 					Gate:
 					{{
-						!searchData.departure.gate
+						!searchData.airportResources.departureGate
 							? "Not Available"
-							: searchData.departure.gate
+							: searchData.airportResources.departureGate
 					}}
 				</h3>
 			</div>
@@ -68,8 +74,8 @@
 
 			<div class="arrival-airport-container">
 				<h3>
-					Airport: {{ searchData.arrival.airport }} -
-					{{ searchData.arrival.iata }}
+					Airport: {{ searchData.arrivalAirport.name }} -
+					{{ searchData.arrivalAirport.iata }}
 				</h3>
 			</div>
 
@@ -77,20 +83,9 @@
 				<h3>
 					Termial:
 					{{
-						!searchData.arrival.terminal
+						!searchData.airportResources.arrivalTerminal
 							? "Not Available"
-							: searchData.arrival.terminal
-					}}
-				</h3>
-			</div>
-
-			<div class="arrival-gate-container">
-				<h3>
-					Gate:
-					{{
-						!searchData.arrival.gate
-							? "Not Available"
-							: searchData.arrival.gate
+							: searchData.airportResources.arrivalTerminal
 					}}
 				</h3>
 			</div>
