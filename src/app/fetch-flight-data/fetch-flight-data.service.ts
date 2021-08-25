@@ -25,15 +25,10 @@ export class FetchFlightDataService {
 		const currentMonth = currentDate.slice(5, 7);
 		const currentDay = currentDate.slice(8, 10);
 		console.log(currentYear, currentMonth, currentDay);
-		const dataUrl = `https://api.flightstats.com/flex/flightstatus/rest/v2/json/flight/status/${carrierCode}/${flightNumber}/dep/${currentYear}/${currentMonth}/${currentDay}?appId=59740609&appKey=577eb50e53d9ce436a21087f9ff5a6f7&extendedOptions=useInlinedReferences`;
-		const dataHeader = {
-			headers: new HttpHeaders({
-				Accept: 'application/json',
-			}),
-		};
+		const dataUrl = `https://cors-anywhere.herokuapp.com/https://api.flightstats.com/flex/flightstatus/rest/v2/json/flight/status/${carrierCode}/${flightNumber}/dep/${currentYear}/${currentMonth}/${currentDay}?appId=59740609&appKey=577eb50e53d9ce436a21087f9ff5a6f7&extendedOptions=useInlinedReferences`;
 
-		// const res = await this.http.get(dataUrl, dataHeader).toPromise();
-		// console.log(res);
+		const res = await this.http.get(dataUrl).toPromise();
+		console.log(res);
 
 		// this.data = res;
 	}
