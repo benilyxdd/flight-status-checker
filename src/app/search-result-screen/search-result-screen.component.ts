@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { FetchFlightDataService } from '../fetch-flight-data/fetch-flight-data.service';
-import { SearchResult, Data } from './searchResult';
+import { SearchResult, FlightStatuses } from './searchResult';
 
 @Component({
 	selector: 'app-search-result-screen',
@@ -10,14 +10,14 @@ import { SearchResult, Data } from './searchResult';
 })
 export class SearchResultScreenComponent implements OnInit {
 	searchResult: SearchResult = {} as SearchResult;
-	searchData: Data = {} as Data;
+	searchData: FlightStatuses = {} as FlightStatuses;
 	fetched: boolean = false;
 	constructor(private fetchFlightDataService: FetchFlightDataService) {}
 
 	ngOnInit(): void {
 		this.searchResult = this.fetchFlightDataService.data;
 		if (this.searchResult) {
-			this.searchData = this.searchResult.data[0];
+			this.searchData = this.searchResult.flightStatuses[0];
 			this.fetched = true;
 		}
 	}

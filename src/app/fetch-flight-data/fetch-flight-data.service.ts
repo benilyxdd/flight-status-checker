@@ -28,8 +28,6 @@ export class FetchFlightDataService {
 		const dataUrl = `https://cors-anywhere.herokuapp.com/https://api.flightstats.com/flex/flightstatus/rest/v2/json/flight/status/${carrierCode}/${flightNumber}/dep/${currentYear}/${currentMonth}/${currentDay}?appId=59740609&appKey=577eb50e53d9ce436a21087f9ff5a6f7&extendedOptions=useInlinedReferences`;
 
 		const res = await this.http.get(dataUrl).toPromise();
-		console.log(res);
-
-		// this.data = res;
+		this.data = res;
 	}
 }
