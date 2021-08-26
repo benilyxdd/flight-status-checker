@@ -77,3 +77,8 @@
 	flex-wrap: wrap;
 	padding: 1vh;
 }
+
+.key,
+.value {
+	font-size: large;
+}

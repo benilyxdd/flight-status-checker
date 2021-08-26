@@ -553,59 +553,54 @@
 						searchData.operationalTimes.actualGateArrival.dateLocal
 					}}
 				</div>
+			</div>
 
-				<div
-					class="
-						flight-plan-planned-arrival-info-container
-						key-value-container
-					"
-					*ngIf="searchData.operationalTimes.flightPlanPlannedArrival"
-				>
-					<div class="key">
-						Flight Plan Planned Arrival Time:&nbsp;
-					</div>
-					<div class="value">
-						{{
-							searchData.operationalTimes.flightPlanPlannedArrival
-								.dateLocal
-						}}
-					</div>
-				</div>
-
-				<div
-					class="
-						estimated-runway-arrival-info-container
-						key-value-container
-					"
-					*ngIf="searchData.operationalTimes.estimatedRunwayArrival"
-				>
-					<div class="key">Estimated Runway Arrival Time:&nbsp;</div>
-					<div class="value">
-						{{
-							searchData.operationalTimes.estimatedRunwayArrival
-								.dateLocal
-						}}
-					</div>
-				</div>
-
-				<div
-					class="
-						actual-runway-arrival-info-container
-						key-value-container
-					"
-					*ngIf="searchData.operationalTimes.actualRunwayArrival"
-				>
-					<div class="key">Actual Runway Arrival Time:&nbsp;</div>
-					<div class="value">
-						{{
-							searchData.operationalTimes.actualRunwayArrival
-								.dateLocal
-						}}
-					</div>
+			<div
+				class="
+					flight-plan-planned-arrival-info-container
+					key-value-container
+				"
+				*ngIf="searchData.operationalTimes.flightPlanPlannedArrival"
+			>
+				<div class="key">Flight Plan Planned Arrival Time:&nbsp;</div>
+				<div class="value">
+					{{
+						searchData.operationalTimes.flightPlanPlannedArrival
+							.dateLocal
+					}}
 				</div>
 			</div>
-			<!-- flight opeartion time info end -->
+
+			<div
+				class="
+					estimated-runway-arrival-info-container
+					key-value-container
+				"
+				*ngIf="searchData.operationalTimes.estimatedRunwayArrival"
+			>
+				<div class="key">Estimated Runway Arrival Time:&nbsp;</div>
+				<div class="value">
+					{{
+						searchData.operationalTimes.estimatedRunwayArrival
+							.dateLocal
+					}}
+				</div>
+			</div>
+
+			<div
+				class="actual-runway-arrival-info-container key-value-container"
+				*ngIf="searchData.operationalTimes.actualRunwayArrival"
+			>
+				<div class="key">Actual Runway Arrival Time:&nbsp;</div>
+				<div class="value">
+					{{
+						searchData.operationalTimes.actualRunwayArrival
+							.dateLocal
+					}}
+				</div>
+			</div>
 		</div>
-		<!-- main content end -->
+		<!-- flight opeartion time info end -->
 	</div>
+	<!-- main content end -->
 </div>
