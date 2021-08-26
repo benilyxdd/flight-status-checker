@@ -29,10 +29,6 @@
 				</h2>
 			</div>
 
-			<div class="flight-date-container">
-				<h3>{{ searchData.departureDate.dateLocal }}</h3>
-			</div>
-
 			<div class="flight-status-container">
 				<h3>Status: {{ status }}</h3>
 			</div>
@@ -47,7 +43,7 @@
 
 		<!-- Delay info start -->
 		<div class="delay-message-container" *ngIf="searchData.delays">
-			<h3>Delay: {{ totalDelay }} min(s)</h3>
+			<h2>Delay: {{ totalDelay }} min(s)</h2>
 			<div
 				class="delay-events-container"
 				*ngIf="
@@ -171,8 +167,233 @@
 		<!-- arrival info end -->
 
 		<!-- flight opeartion time info start -->
-		<div class="flight-operation-detail-container">
-			this is flight opeartion detail section
+		<div
+			class="flight-operation-detail-container"
+			*ngIf="
+				searchData.operationalTimes.actualGateArrival ||
+				searchData.operationalTimes.actualGateDeparture ||
+				searchData.operationalTimes.actualRunwayArrival ||
+				searchData.operationalTimes.actualRunwayDeparture ||
+				searchData.operationalTimes.estimatedGateArrival ||
+				searchData.operationalTimes.estimatedGateDeparture ||
+				searchData.operationalTimes.estimatedRunwayArrival ||
+				searchData.operationalTimes.estimatedRunwayDeparture ||
+				searchData.operationalTimes.flightPlanPlannedArrival ||
+				searchData.operationalTimes.flightPlanPlannedDeparture ||
+				searchData.operationalTimes.publishedArrival ||
+				searchData.operationalTimes.publishedDeparture ||
+				searchData.operationalTimes.scheduledGateArrival ||
+				searchData.operationalTimes.scheduledGateDeparture ||
+				searchData.operationalTimes.scheduledRunwayArrival ||
+				searchData.operationalTimes.scheduledRunwayDeparture
+			"
+		>
+			<div class="flight-operation-title-container">
+				<h2>Flight Operation(s):</h2>
+			</div>
+
+			<div
+				class="published-departure-info-container"
+				*ngIf="searchData.operationalTimes.publishedDeparture"
+			>
+				<h3>
+					Published Departure Time:
+					{{
+						searchData.operationalTimes.publishedDeparture.dateLocal
+					}}
+				</h3>
+			</div>
+
+			<div
+				class="published-arrival-info-container"
+				*ngIf="searchData.operationalTimes.publishedArrival"
+			>
+				<h3>
+					Published Arrival Time:
+					{{ searchData.operationalTimes.publishedArrival.dateLocal }}
+				</h3>
+			</div>
+
+			<div
+				class="scheduled-gate-departure-info-container"
+				*ngIf="searchData.operationalTimes.scheduledGateDeparture"
+			>
+				<h3>
+					Scheduled Gate Departure Time:
+					{{
+						searchData.operationalTimes.scheduledGateDeparture
+							.dateLocal
+					}}
+				</h3>
+			</div>
+
+			<div
+				class="scheduled-runway-departure-info-container"
+				*ngIf="searchData.operationalTimes.scheduledRunwayDeparture"
+			>
+				<h3>
+					Scheduled Runway Departure Time:
+					{{
+						searchData.operationalTimes.scheduledRunwayDeparture
+							.dateLocal
+					}}
+				</h3>
+			</div>
+
+			<div
+				class="estimated-gate-departure-info-container"
+				*ngIf="searchData.operationalTimes.estimatedGateDeparture"
+			>
+				<h3>
+					Estimated Gate Departure Time:
+					{{
+						searchData.operationalTimes.estimatedGateDeparture
+							.dateLocal
+					}}
+				</h3>
+			</div>
+
+			<div
+				class="actual-gate-departure-info-container"
+				*ngIf="searchData.operationalTimes.actualGateDeparture"
+			>
+				<h3>
+					Actual Gate Departure Time:
+					{{
+						searchData.operationalTimes.actualGateDeparture
+							.dateLocal
+					}}
+				</h3>
+			</div>
+
+			<div
+				class="flight-plan-planned-departure-info-container"
+				*ngIf="searchData.operationalTimes.flightPlanPlannedDeparture"
+			>
+				<h3>
+					Flight Plan Planned Departure Time:
+					{{
+						searchData.operationalTimes.flightPlanPlannedDeparture
+							.dateLocal
+					}}
+				</h3>
+			</div>
+
+			<div
+				class="estimated-runway-departure-info-container"
+				*ngIf="searchData.operationalTimes.estimatedRunwayDeparture"
+			>
+				<h3>
+					Estimated Runway Departure Time:
+					{{
+						searchData.operationalTimes.estimatedRunwayDeparture
+							.dateLocal
+					}}
+				</h3>
+			</div>
+
+			<div
+				class="actual-runway-departure-info-container"
+				*ngIf="searchData.operationalTimes.actualRunwayDeparture"
+			>
+				<h3>
+					Actual Runway Departure Time:
+					{{
+						searchData.operationalTimes.actualRunwayDeparture
+							.dateLocal
+					}}
+				</h3>
+			</div>
+
+			<div
+				class="scheduled-runway-arrival-info-container"
+				*ngIf="searchData.operationalTimes.scheduledRunwayArrival"
+			>
+				<h3>
+					Scheduled Runway Arrival Time:
+					{{
+						searchData.operationalTimes.scheduledRunwayArrival
+							.dateLocal
+					}}
+				</h3>
+			</div>
+
+			<div
+				class="scheduled-gate-arrival-info-container"
+				*ngIf="searchData.operationalTimes.scheduledGateArrival"
+			>
+				<h3>
+					Scheduled Gate Arrival Time:
+					{{
+						searchData.operationalTimes.scheduledGateArrival
+							.dateLocal
+					}}
+				</h3>
+			</div>
+
+			<div
+				class="estimatedGate-arrival-info-container"
+				*ngIf="searchData.operationalTimes.estimatedGateArrival"
+			>
+				<h3>
+					Estimated Gate Arrival Time:
+					{{
+						searchData.operationalTimes.estimatedGateArrival
+							.dateLocal
+					}}
+				</h3>
+			</div>
+
+			<div
+				class="actual-gate-arrival-info-container"
+				*ngIf="searchData.operationalTimes.actualGateArrival"
+			>
+				<h3>
+					Actual Gate Arrival Time:
+					{{
+						searchData.operationalTimes.actualGateArrival.dateLocal
+					}}
+				</h3>
+			</div>
+
+			<div
+				class="flight-plan-planned-arrival-info-container"
+				*ngIf="searchData.operationalTimes.flightPlanPlannedArrival"
+			>
+				<h3>
+					Flight Plan Planned Arrival Time:
+					{{
+						searchData.operationalTimes.flightPlanPlannedArrival
+							.dateLocal
+					}}
+				</h3>
+			</div>
+
+			<div
+				class="estimated-runway-arrival-info-container"
+				*ngIf="searchData.operationalTimes.estimatedRunwayArrival"
+			>
+				<h3>
+					Estimated Runway Arrival Time:
+					{{
+						searchData.operationalTimes.estimatedRunwayArrival
+							.dateLocal
+					}}
+				</h3>
+			</div>
+
+			<div
+				class="actual-runway-arrival-info-container"
+				*ngIf="searchData.operationalTimes.actualRunwayArrival"
+			>
+				<h3>
+					Actual Runway Arrival Time:
+					{{
+						searchData.operationalTimes.actualRunwayArrival
+							.dateLocal
+					}}
+				</h3>
+			</div>
 		</div>
 		<!-- flight opeartion time info end -->
 	</div>
