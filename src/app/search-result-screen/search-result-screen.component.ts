@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 import { FetchFlightDataService } from '../fetch-flight-data/fetch-flight-data.service';
-import { SearchResult, FlightStatuses, FlightStatusDescription } from './searchResult';
+import {
+	SearchResult,
+	FlightStatuses,
+	FlightStatusDescription,
+} from './searchResult';
 
 @Component({
 	selector: 'app-search-result-screen',
@@ -16,7 +20,7 @@ export class SearchResultScreenComponent implements OnInit {
 
 	// seperated data
 	totalDelay: number = 0;
-	status: string = "";
+	status: string = '';
 	constructor(private fetchFlightDataService: FetchFlightDataService) {}
 
 	ngOnInit(): void {
