@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { FetchFlightDataService } from '../fetch-flight-data/fetch-flight-data.service';
-import { Route } from '@angular/compiler/src/core';
 @Component({
 	selector: 'app-search-bar',
 	templateUrl: './search-bar.component.html',
