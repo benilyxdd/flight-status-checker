@@ -17,25 +17,35 @@
 	<div *ngIf="fetched && searchData">
 		<!-- Basic info start -->
 		<div class="basic-info-container">
-			<div class="flight-iata-container">
+			<div class="flight-carrier-container">
+				<!-- Eg. Cathay Pacific CX 100 -->
 				<h1>
-					{{ searchData.carrier.iata }}{{ searchData.flightNumber }}
+					{{ searchData.carrier.name }} {{ searchData.carrier.iata }}
+					{{ searchData.flightNumber }}
 				</h1>
 			</div>
 
-			<div class="flight-icao-container">
+			<div class="flight-destination-container">
 				<h2>
-					{{ searchData.carrier.icao }}{{ searchData.flightNumber }}
+					{{ searchData.departureAirport.city }} to
+					{{ searchData.arrivalAirport.city }}
 				</h2>
 			</div>
+
+			<!-- <div class="flight-icao-container">
+				<h2>
+					{{ searchData.carrier.icao }} {{ searchData.flightNumber }}
+				</h2>
+			</div> -->
 
 			<div class="flight-status-container">
 				<h3>Status: {{ status }}</h3>
 			</div>
 
-			<div class="flight-scheduled-time-container">
+			<div class="flight-scheduled-departure-container">
 				<h3>
-					Scheduled Time: {{ searchData.departureDate.dateLocal }}
+					Scheduled Departure:
+					{{ searchData.departureDate.dateLocal }}
 				</h3>
 			</div>
 		</div>
@@ -46,7 +56,10 @@
 			class="delay-message-container"
 			*ngIf="searchData.delays && totalDelay !== 0"
 		>
-			<h2>Delay: {{ totalDelay }} min(s)</h2>
+			<div class="total-delay-info-container">
+				<h2>Delay: {{ totalDelay }} min(s)</h2>
+			</div>
+
 			<div
 				class="delay-events-container"
 				*ngIf="
@@ -59,6 +72,7 @@
 				<div class="delay-events-title-container">
 					<h3>Delay Event(s)</h3>
 				</div>
+
 				<div
 					class="departure-gate-delay-info-container"
 					*ngIf="searchData.delays.departureGateDelayMinutes"
@@ -68,6 +82,7 @@
 						{{ searchData.delays.departureGateDelayMinutes }} min(s)
 					</h3>
 				</div>
+
 				<div
 					class="departure-runway-delay-info-container"
 					*ngIf="searchData.delays.departureRunwayDelayMinutes"
@@ -78,6 +93,7 @@
 						min(s)
 					</h3>
 				</div>
+
 				<div
 					class="arrival-gate-delay-info-container"
 					*ngIf="searchData.delays.arrivalGateDelayMinutes"
@@ -87,6 +103,7 @@
 						{{ searchData.delays.arrivalGateDelayMinutes }} min(s)
 					</h3>
 				</div>
+
 				<div
 					class="arrival-runway-delay-info-container"
 					*ngIf="searchData.delays.arrivalRunwayDelayMinutes"
@@ -108,6 +125,13 @@
 				<h3>
 					Airport: {{ searchData.departureAirport.name }} -
 					{{ searchData.departureAirport.iata }}
+				</h3>
+			</div>
+
+			<div class="scheduled-departure-time-info-container">
+				<h3>
+					Scheduled Departure:
+					{{ searchData.departureDate.dateLocal }}
 				</h3>
 			</div>
 
@@ -143,6 +167,13 @@
 				<h3>
 					Airport: {{ searchData.arrivalAirport.name }} -
 					{{ searchData.arrivalAirport.iata }}
+				</h3>
+			</div>
+
+			<div class="scheduled-arrival-time-info-container">
+				<h3>
+					Scheduled Arrival:
+					{{ searchData.arrivalDate.dateLocal }}
 				</h3>
 			</div>
 
