@@ -128,20 +128,20 @@ export interface FlightStatuses {
 		| [];
 	// need to add something
 	delays: {
-		departureGateDelayMinutes?: number;
-		departureRunwayDelayMinutes?: number;
-		arrivalGateDelayMinutes?: number;
-		arrivalRunwayDelayMinutes?: number;
+		departureGateDelayMinutes?: string;
+		departureRunwayDelayMinutes?: string;
+		arrivalGateDelayMinutes?: string;
+		arrivalRunwayDelayMinutes?: string;
 	};
 	flightDurations: {
-		scheduledBlockMinutes: number;
-		scheduledAirMinutes?: number;
-		scheduledTaxiOutMinutes?: number;
-		scheduledTaxiInMinutes?: number;
-		blockMinutes?: number;
-		airMinutes?: number;
-		taxiInMinutes?: number;
-		taxiOutMinutes?: number;
+		scheduledBlockMinutes: string;
+		scheduledAirMinutes?: string;
+		scheduledTaxiOutMinutes?: string;
+		scheduledTaxiInMinutes?: string;
+		blockMinutes?: string;
+		airMinutes?: string;
+		taxiInMinutes?: string;
+		taxiOutMinutes?: string;
 	};
 	airportResources: {
 		departureTerminal?: string;

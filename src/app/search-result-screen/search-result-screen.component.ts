@@ -34,20 +34,24 @@ export class SearchResultScreenComponent implements OnInit {
 
 			// delays
 			if (this.searchData.delays.arrivalGateDelayMinutes) {
-				this.totalDelay +=
-					this.searchData.delays.arrivalGateDelayMinutes;
+				this.totalDelay += parseInt(
+					this.searchData.delays.arrivalGateDelayMinutes
+				);
 			}
 			if (this.searchData.delays.arrivalRunwayDelayMinutes) {
-				this.totalDelay +=
-					this.searchData.delays.arrivalRunwayDelayMinutes;
+				this.totalDelay += parseInt(
+					this.searchData.delays.arrivalRunwayDelayMinutes
+				);
 			}
 			if (this.searchData.delays.departureGateDelayMinutes) {
-				this.totalDelay +=
-					this.searchData.delays.departureGateDelayMinutes;
+				this.totalDelay += parseInt(
+					this.searchData.delays.departureGateDelayMinutes
+				);
 			}
 			if (this.searchData.delays.departureRunwayDelayMinutes) {
-				this.totalDelay +=
-					this.searchData.delays.departureRunwayDelayMinutes;
+				this.totalDelay += parseInt(
+					this.searchData.delays.departureRunwayDelayMinutes
+				);
 			}
 
 			// status
@@ -234,10 +238,112 @@ export class SearchResultScreenComponent implements OnInit {
 							.dateLocal
 					);
 			}
+
+			// duration
+			if (
+				this.searchData.flightDurations.scheduledBlockMinutes !==
+				undefined
+			) {
+				this.searchData.flightDurations.scheduledBlockMinutes =
+					this.parseDuration(
+						this.searchData.flightDurations.scheduledBlockMinutes
+					);
+			}
+			if (
+				this.searchData.flightDurations.scheduledAirMinutes !==
+				undefined
+			) {
+				this.searchData.flightDurations.scheduledAirMinutes =
+					this.parseDuration(
+						this.searchData.flightDurations.scheduledAirMinutes
+					);
+			}
+			if (
+				this.searchData.flightDurations.scheduledTaxiOutMinutes !==
+				undefined
+			) {
+				this.searchData.flightDurations.scheduledTaxiOutMinutes =
+					this.parseDuration(
+						this.searchData.flightDurations.scheduledTaxiOutMinutes
+					);
+			}
+			if (
+				this.searchData.flightDurations.scheduledTaxiInMinutes !==
+				undefined
+			) {
+				this.searchData.flightDurations.scheduledTaxiInMinutes =
+					this.parseDuration(
+						this.searchData.flightDurations.scheduledTaxiInMinutes
+					);
+			}
+			if (this.searchData.flightDurations.blockMinutes !== undefined) {
+				this.searchData.flightDurations.blockMinutes =
+					this.parseDuration(
+						this.searchData.flightDurations.blockMinutes
+					);
+			}
+			if (this.searchData.flightDurations.airMinutes !== undefined) {
+				this.searchData.flightDurations.airMinutes = this.parseDuration(
+					this.searchData.flightDurations.airMinutes
+				);
+			}
+			if (this.searchData.flightDurations.taxiInMinutes !== undefined) {
+				this.searchData.flightDurations.taxiInMinutes =
+					this.parseDuration(
+						this.searchData.flightDurations.taxiInMinutes
+					);
+			}
+			if (this.searchData.flightDurations.taxiOutMinutes !== undefined) {
+				this.searchData.flightDurations.taxiOutMinutes =
+					this.parseDuration(
+						this.searchData.flightDurations.taxiOutMinutes
+					);
+			}
+
+			// delays
+			if (
+				this.searchData.delays.departureGateDelayMinutes !== undefined
+			) {
+				this.searchData.delays.departureGateDelayMinutes =
+					this.parseDuration(
+						this.searchData.delays.departureGateDelayMinutes
+					);
+			}
+			if (
+				this.searchData.delays.departureRunwayDelayMinutes !== undefined
+			) {
+				this.searchData.delays.departureRunwayDelayMinutes =
+					this.parseDuration(
+						this.searchData.delays.departureRunwayDelayMinutes
+					);
+			}
+			if (this.searchData.delays.arrivalGateDelayMinutes !== undefined) {
+				this.searchData.delays.arrivalGateDelayMinutes =
+					this.parseDuration(
+						this.searchData.delays.arrivalGateDelayMinutes
+					);
+			}
+			if (
+				this.searchData.delays.arrivalRunwayDelayMinutes !== undefined
+			) {
+				this.searchData.delays.arrivalRunwayDelayMinutes =
+					this.parseDuration(
+						this.searchData.delays.arrivalRunwayDelayMinutes
+					);
+			}
 		}
 	}
 
 	private parseTime(time: string): string {
 		return new Date(time).toLocaleString();
+	}
+
+	private parseDuration(time: string): string {
+		const hours = Math.floor(parseInt(time) / 60);
+		const mins = parseInt(time) - hours * 60;
+		if (hours) {
+			return `${hours} Hour(s) ${mins} Min(s)`;
+		}
+		return `${mins} Min(s)`;
 	}
 }
