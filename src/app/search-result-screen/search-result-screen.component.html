@@ -42,7 +42,10 @@
 		<!-- basic info end -->
 
 		<!-- Delay info start -->
-		<div class="delay-message-container" *ngIf="searchData.delays">
+		<div
+			class="delay-message-container"
+			*ngIf="searchData.delays && totalDelay !== 0"
+		>
 			<h2>Delay: {{ totalDelay }} min(s)</h2>
 			<div
 				class="delay-events-container"
