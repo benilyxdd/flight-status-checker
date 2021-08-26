@@ -16,7 +16,7 @@
 	<!-- main content start -->
 	<div *ngIf="fetched && searchData">
 		<!-- Basic info start -->
-		<div class="basic-info-container">
+		<div class="basic-info-container card">
 			<div class="flight-carrier-container">
 				<!-- Eg. Cathay Pacific CX 100 -->
 				<h1>
@@ -53,7 +53,7 @@
 
 		<!-- Delay info start -->
 		<div
-			class="delay-message-container"
+			class="delay-message-container card"
 			*ngIf="searchData.delays && totalDelay !== 0"
 		>
 			<div class="total-delay-info-container">
@@ -117,92 +117,108 @@
 		</div>
 		<!-- Delay info end -->
 
-		<!-- departure info start -->
-		<div class="departure-detail-container">
-			<h2>Departure</h2>
+		<div class="departure-and-arrival-detail-container">
+			<!-- departure info start -->
+			<div class="departure-detail-container card">
+				<h2>Departure</h2>
 
-			<div class="departure-airport-container">
-				<h3>
-					Airport: {{ searchData.departureAirport.name }} -
+				<div class="departure-arrival-airport-container">
+					{{ searchData.departureAirport.name }} -
 					{{ searchData.departureAirport.iata }}
-				</h3>
+				</div>
+
+				<div class="departure-arrival-info-container">
+					<div class="scheduled-departure-time-info-container info">
+						<div class="departure-arrival-info-title-container">
+							Scheduled Departure:
+						</div>
+						<div class="departure-arrival-info-content-container">
+							{{ searchData.departureDate.dateLocal }}
+						</div>
+					</div>
+
+					<div class="departure-termial-container info">
+						<div class="departure-arrival-info-title-container">
+							Termial:
+						</div>
+						<div class="departure-arrival-info-content-container">
+							{{
+								!searchData.airportResources.departureTerminal
+									? "Not Available"
+									: searchData.airportResources
+											.departureTerminal
+							}}
+						</div>
+					</div>
+
+					<div class="departure-gate-container info">
+						<div class="departure-arrival-info-title-container">
+							Gate:
+						</div>
+						<div class="departure-arrival-info-content-container">
+							{{
+								!searchData.airportResources.departureGate
+									? "Not Available"
+									: searchData.airportResources.departureGate
+							}}
+						</div>
+					</div>
+				</div>
 			</div>
+			<!-- departure info end -->
 
-			<div class="scheduled-departure-time-info-container">
-				<h3>
-					Scheduled Departure:
-					{{ searchData.departureDate.dateLocal }}
-				</h3>
-			</div>
+			<!-- arrival info start -->
+			<div class="arrival-detail-container card">
+				<h2>Arrival</h2>
 
-			<div class="departure-termial-container">
-				<h3>
-					Termial:
-					{{
-						!searchData.airportResources.departureTerminal
-							? "Not Available"
-							: searchData.airportResources.departureTerminal
-					}}
-				</h3>
-			</div>
-
-			<div class="departure-gate-container">
-				<h3>
-					Gate:
-					{{
-						!searchData.airportResources.departureGate
-							? "Not Available"
-							: searchData.airportResources.departureGate
-					}}
-				</h3>
-			</div>
-		</div>
-		<!-- departure info end -->
-
-		<!-- arrival info start -->
-		<div class="arrival-detail-container">
-			<h2>Arrival</h2>
-
-			<div class="arrival-airport-container">
-				<h3>
-					Airport: {{ searchData.arrivalAirport.name }} -
+				<div class="departure-arrival-airport-container">
+					{{ searchData.arrivalAirport.name }} -
 					{{ searchData.arrivalAirport.iata }}
-				</h3>
-			</div>
+				</div>
 
-			<div class="scheduled-arrival-time-info-container">
-				<h3>
-					Scheduled Arrival:
-					{{ searchData.arrivalDate.dateLocal }}
-				</h3>
-			</div>
+				<div class="departure-arrival-info-container">
+					<div class="scheduled-arrival-time-info-container info">
+						<div class="departure-arrival-info-title-container">
+							Scheduled Arrival:
+						</div>
+						<div class="departure-arrival-info-content-container">
+							{{ searchData.arrivalDate.dateLocal }}
+						</div>
+					</div>
 
-			<div class="arrival-termial-container">
-				<h3>
-					Termial:
-					{{
-						!searchData.airportResources.arrivalTerminal
-							? "Not Available"
-							: searchData.airportResources.arrivalTerminal
-					}}
-				</h3>
+					<div class="arrival-termial-container info">
+						<div class="departure-arrival-info-title-container">
+							Termial:
+						</div>
+						<div class="departure-arrival-info-content-container">
+							{{
+								!searchData.airportResources.arrivalTerminal
+									? "Not Available"
+									: searchData.airportResources
+											.arrivalTerminal
+							}}
+						</div>
+					</div>
+					<div class="arrival-gate-container info">
+						<div class="departure-arrival-info-title-container">
+							Gate:
+						</div>
+						<div class="departure-arrival-info-content-container">
+							{{
+								!searchData.airportResources.arrivalGate
+									? "Not Available"
+									: searchData.airportResources.arrivalGate
+							}}
+						</div>
+					</div>
+				</div>
 			</div>
-			<div class="arrival-gate-container">
-				<h3>
-					Gate:
-					{{
-						!searchData.airportResources.arrivalGate
-							? "Not Available"
-							: searchData.airportResources.arrivalGate
-					}}
-				</h3>
-			</div>
+			<!-- arrival info end -->
 		</div>
-		<!-- arrival info end -->
 
 		<!-- flight durations info start -->
 		<div
-			class="flight-durations-detail-container"
+			class="flight-durations-detail-container card"
 			*ngIf="
 				searchData.flightDurations.airMinutes ||
 				searchData.flightDurations.blockMinutes ||
@@ -310,7 +326,7 @@
 
 		<!-- flight opeartion time info start -->
 		<div
-			class="flight-operation-detail-container"
+			class="flight-operation-detail-container card"
 			*ngIf="
 				searchData.operationalTimes.actualGateArrival ||
 				searchData.operationalTimes.actualGateDeparture ||

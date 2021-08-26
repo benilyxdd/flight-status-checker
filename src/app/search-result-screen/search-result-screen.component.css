@@ -1,0 +1,54 @@
+.card {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+
+	margin: 2%;
+	padding: 2%;
+
+	border-radius: 1vh;
+	border-style: solid;
+	border-color: black;
+	border-width: 2px;
+}
+
+.departure-and-arrival-detail-container {
+	display: flex;
+	flex-direction: row;
+}
+
+.departure-detail-container,
+.arrival-detail-container {
+	flex: 1;
+}
+
+.departure-arrival-info-container {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+
+	justify-content: space-between;
+}
+
+.info {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	padding-right: 3%;
+}
+
+.departure-arrival-info-content-container {
+	font-size: 1.5rem;
+	margin-top: 1vh;
+}
+
+.departure-arrival-info-title-container {
+	margin-bottom: 1vh;
+}
+
+.departure-arrival-airport-container {
+	font-size: 1.5rem;
+	font-weight: bold;
+	margin-top: 1vh;
+	margin-bottom: 4vh;
+}
