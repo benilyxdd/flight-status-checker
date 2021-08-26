@@ -7,6 +7,7 @@ import { AngularFireModule } from '@angular/fire';
 
 // angular materials
 import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatInputModule } from '@angular/material/input';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -30,6 +31,7 @@ import { environment } from '../environments/environment';
 
 		// angular material
 		MatButtonModule,
+		MatDividerModule,
 		MatInputModule,
 
 		// firebase
