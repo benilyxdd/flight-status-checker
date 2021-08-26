@@ -17,7 +17,7 @@ export class FetchFlightDataService {
 		const currentYear = currentDate.slice(0, 4);
 		const currentMonth = currentDate.slice(5, 7);
 		const currentDay = currentDate.slice(8, 10);
-		const dataUrl = `https://cors-anywhere.herokuapp.com/https://api.flightstats.com/flex/flightstatus/rest/v2/json/flight/status/${carrierCode}/${flightNumber}/dep/${currentYear}/${currentMonth}/${currentDay}?appId=59740609&appKey=${app_key}&extendedOptions=useInlinedReferences`;
+		const dataUrl = `https://thingproxy.freeboard.io/fetch/https://api.flightstats.com/flex/flightstatus/rest/v2/json/flight/status/${carrierCode}/${flightNumber}/dep/${currentYear}/${currentMonth}/${currentDay}?appId=59740609&appKey=${app_key}&extendedOptions=useInlinedReferences`;
 
 		const res = await this.http.get(dataUrl).toPromise();
 		this.data = res;
