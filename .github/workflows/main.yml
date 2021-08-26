@@ -14,10 +14,11 @@ jobs:
               run: npm ci
 
             - name: Create
-              run: touch ./src/environments/env.ts && echo "export const api_key = \"$API_KEY\";export const firebase_api_key = \"$FIREBASE_API_KEY\";" > ./src/environments/env.ts
+              run: touch ./src/environments/env.ts && echo "export const api_key = \"$API_KEY\";export const firebase_api_key = \"$FIREBASE_API_KEY\";export const app_key = \"$APP_KEY\"" > ./src/environments/env.ts
               env:
                 API_KEY: ${{secrets.API_KEY}}
                 FIREBASE_API_KEY: ${{secrets.FIREBASE_API_KEY}}
+                APP_KEY: ${{secrets.APP_KEY}}
 
             - name: Test
               run: |
