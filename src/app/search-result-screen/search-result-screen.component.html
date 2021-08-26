@@ -169,6 +169,114 @@
 		</div>
 		<!-- arrival info end -->
 
+		<!-- flight durations info start -->
+		<div
+			class="flight-durations-detail-container"
+			*ngIf="
+				searchData.flightDurations.airMinutes ||
+				searchData.flightDurations.blockMinutes ||
+				searchData.flightDurations.scheduledAirMinutes ||
+				searchData.flightDurations.scheduledBlockMinutes ||
+				searchData.flightDurations.scheduledTaxiOutMinutes ||
+				searchData.flightDurations.scheduledTaxiInMinutes ||
+				searchData.flightDurations.taxiInMinutes ||
+				searchData.flightDurations.taxiOutMinutes
+			"
+		>
+			<div class="flight-durations-title-container">
+				<h2>Flight Durations Info(s)</h2>
+			</div>
+
+			<div
+				class="scheduled-block-minutes-info-container"
+				*ngIf="searchData.flightDurations.scheduledBlockMinutes"
+			>
+				<h3>
+					Scheduled Block Minutes:
+					{{ searchData.flightDurations.scheduledBlockMinutes }}
+					min(s)
+				</h3>
+			</div>
+
+			<div
+				class="block-minutes-info-container"
+				*ngIf="searchData.flightDurations.blockMinutes"
+			>
+				<h3>
+					Block Minutes:
+					{{ searchData.flightDurations.blockMinutes }}
+					min(s)
+				</h3>
+			</div>
+
+			<div
+				class="scheduled-air-minutes-info-container"
+				*ngIf="searchData.flightDurations.scheduledAirMinutes"
+			>
+				<h3>
+					Scheduled Air Minutes:
+					{{ searchData.flightDurations.scheduledAirMinutes }}
+					min(s)
+				</h3>
+			</div>
+
+			<div
+				class="air-minutes-info-container"
+				*ngIf="searchData.flightDurations.airMinutes"
+			>
+				<h3>
+					Air Minutes:
+					{{ searchData.flightDurations.airMinutes }}
+					min(s)
+				</h3>
+			</div>
+
+			<div
+				class="scheduled-taxi-out-minutes-info-container"
+				*ngIf="searchData.flightDurations.scheduledTaxiOutMinutes"
+			>
+				<h3>
+					Scheduled Taxi Out Minutes:
+					{{ searchData.flightDurations.scheduledTaxiOutMinutes }}
+					min(s)
+				</h3>
+			</div>
+
+			<div
+				class="taxi-out-minutes-info-container"
+				*ngIf="searchData.flightDurations.taxiOutMinutes"
+			>
+				<h3>
+					Taxi Out Minutes:
+					{{ searchData.flightDurations.taxiOutMinutes }}
+					min(s)
+				</h3>
+			</div>
+
+			<div
+				class="scheduled-taxi-in-minutes-info-container"
+				*ngIf="searchData.flightDurations.scheduledTaxiInMinutes"
+			>
+				<h3>
+					Scheduled Taxi In Minutes:
+					{{ searchData.flightDurations.scheduledTaxiInMinutes }}
+					min(s)
+				</h3>
+			</div>
+
+			<div
+				class="taxi-in-minutes-info-container"
+				*ngIf="searchData.flightDurations.taxiInMinutes"
+			>
+				<h3>
+					Taxi In Minutes:
+					{{ searchData.flightDurations.taxiInMinutes }}
+					min(s)
+				</h3>
+			</div>
+		</div>
+		<!-- flight durations info end -->
+
 		<!-- flight opeartion time info start -->
 		<div
 			class="flight-operation-detail-container"
