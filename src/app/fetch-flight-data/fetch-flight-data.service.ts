@@ -11,7 +11,7 @@ export class FetchFlightDataService {
 	constructor(private http: HttpClient) {}
 
 	async fetchFlightData(IATA: string): Promise<any> {
-		const CORS = 'https://cors-anywhere.herokuapp.com/';
+		const CORS = 'https://cors-anywhere-benily.herokuapp.com/';
 		// prepare data to fetch
 		const [carrierCode, flightNumber] = IATA.split(' ');
 		const currentDate = new Date().toISOString().slice(0, 10);
