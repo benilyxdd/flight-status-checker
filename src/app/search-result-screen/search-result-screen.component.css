@@ -1,6 +1,5 @@
 .card {
 	display: flex;
-	flex-wrap: wrap;
 	flex-direction: column;
 
 	margin: 2%;
@@ -12,13 +11,19 @@
 	border-width: 2px;
 }
 
+.info-container {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+}
+
 .departure-and-arrival-detail-container {
 	display: flex;
 	flex-direction: row;
+	flex-wrap: wrap;
 }
 
-.departure-detail-container,
-.arrival-detail-container {
+.departure-arrival-detail-container {
 	flex: 1;
 }
 
