@@ -1,4 +1,4 @@
-# PlaneStatusChecker
+# FlightStatusChecker
 
 [Link](https://planes-status-checker.web.app/)
 
